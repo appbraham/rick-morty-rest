@@ -6,10 +6,10 @@ export interface CharacterResponse {
 export interface Character {
   id:       number;
   name:     string;
-  status:   string;
-  species:  string;
+  status:   Status;
+  species:  Species;
   type:     string;
-  gender:   string;
+  gender:   Gender;
   origin:   Location;
   location: Location;
   image:    string;
@@ -28,4 +28,21 @@ export interface Info {
 export interface Location {
   name: string;
   url:  string;
+}
+
+export enum Gender {
+  Female = "Female",
+  Male = "Male",
+  Unknown = "unknown",
+}
+
+export enum Species {
+  Alien = "Alien",
+  Human = "Human",
+}
+
+export enum Status {
+  Alive = "Alive",
+  Dead = "Dead",
+  Unknown = "unknown",
 }

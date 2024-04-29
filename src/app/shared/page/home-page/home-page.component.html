@@ -1,1 +1,21 @@
-<p>home-page works!</p>
+<section class="rounded-lg bg-neutral/40 backdrop-blur-md p-4 mb-6">
+  <h1 class="text-white text-3xl font-bold">Rick & Morthy Rest API</h1>
+</section>
+
+<section class="grid grid-cols-flow gap-6">
+
+  @for (character of characters; track character.id) {
+    <app-card-character [character]="character" />
+  }
+
+  <!-- <app-card-character />
+  <app-card-character />
+  <app-card-character />
+  <app-card-character />
+  <app-card-character />
+  <app-card-character />
+  <app-card-character />
+  <app-card-character />
+  <app-card-character /> -->
+
+</section>
