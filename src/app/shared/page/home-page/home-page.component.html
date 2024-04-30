@@ -5,17 +5,13 @@
 <section class="grid grid-cols-flow gap-6">
 
   @for (character of characters; track character.id) {
-    <app-card-character [character]="character" />
-  }
 
-  <!-- <app-card-character />
-  <app-card-character />
-  <app-card-character />
-  <app-card-character />
-  <app-card-character />
-  <app-card-character />
-  <app-card-character />
-  <app-card-character />
-  <app-card-character /> -->
+    @defer (on viewport) {
+      <app-card-character [character]="character" (loadCharacters)="loadCharacters($event)" />
+    }@placeholder {
+      <p>Cargando...</p>
+    }
+
+  }
 
 </section>

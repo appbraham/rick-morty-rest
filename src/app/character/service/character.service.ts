@@ -12,7 +12,7 @@ export class CharacterService {
   private baseUrl:string = environment.baseUrl;
   private http = inject(HttpClient);
 
-  getAllCharacter(page: number = 1): Observable<CharacterResponse>{
+  getAllCharacter(page: number): Observable<CharacterResponse>{
     const params = new HttpParams().set('page', page);
     return this.http.get<CharacterResponse>(`${this.baseUrl}/character`, { params });
   }

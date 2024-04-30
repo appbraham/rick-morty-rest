@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StatusCharacterComponent } from '../status-character/status-character.component';
 import { Character } from '../../interface/character.interface';
 import { CommonModule } from '@angular/common';
@@ -9,9 +9,16 @@ import { CommonModule } from '@angular/common';
   imports: [ CommonModule, StatusCharacterComponent],
   templateUrl: './card-character.component.html',
 })
-export class CardCharacterComponent {
+export class CardCharacterComponent implements OnInit{
 
   @Input({required : true})
   public character! : Character;
+
+  @Output()
+  loadCharacters = new EventEmitter<number>();
+
+  ngOnInit(): void {
+    this.loadCharacters.emit(this.character.id);
+  }
 
 }
