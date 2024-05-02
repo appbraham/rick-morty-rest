@@ -18,10 +18,9 @@ module.exports = {
         'sans': ['"SN Pro", sans-serif', ...defaultTheme.fontFamily.sans],
       },
       gridTemplateColumns:{
-        'flow': 'repeat(auto-fit, minmax(250px, 1fr))'
+        'flow': 'repeat(auto-fit, minmax(260px, 1fr))'
       },
       backgroundImage:{
-        hero: "url('/assets/bg-landscape.jpeg')",
         rainbow: 'conic-gradient(#fd004c,#fe9000,#fff020,#3edf4b, #3363ff,#b102b7,#fd004c)',
       },
       boxShadow:{
