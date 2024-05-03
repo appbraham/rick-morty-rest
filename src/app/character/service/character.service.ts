@@ -17,4 +17,8 @@ export class CharacterService {
     return this.http.get<CharacterResponse>(`${this.baseUrl}/character`, { params });
   }
 
+  getSingleCharacter(id: number): Observable<Character>{
+    return this.http.get<Character>(`${this.baseUrl}/character/${id}`);
+  }
+
 }

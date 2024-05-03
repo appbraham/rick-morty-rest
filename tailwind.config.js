@@ -24,7 +24,7 @@ module.exports = {
         rainbow: 'conic-gradient(#fd004c,#fe9000,#fff020,#3edf4b, #3363ff,#b102b7,#fd004c)',
       },
       boxShadow:{
-        'glowing' :'0 0 5px #00ff40, 0 0 10px #00ff40, 0 0 15px #00ff40, 0 0 20px #00ff40'
+        'glowing' :'0 0 5px #00ff40, 0 0 10px #00ff40, 0 0 15px #00ff40, 0 0 20px #00ff40',
       },
       keyframes:{
         spiner: {

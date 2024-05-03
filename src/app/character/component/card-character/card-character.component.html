@@ -1,29 +1,18 @@
- <article class="relative group p-2 text-white rounded-[14px] grid place-items-center overflow-hidden hover:shadow-glowing
-                 before:absolute before:block before:size-[180%] before:animate-spiner hover:before:bg-rainbow">
+ <article class="relative group p-2 text-neutral text-center rounded-[14px] grid place-items-center overflow-hidden hover:shadow-glowing hover:before:bg-rainbow
+                 before:absolute before:block before:size-[180%] before:hover:animate-spiner">
 
-  <div class="w-full overflow-hidden rounded-lg bg-neutral/80 backdrop-blur-xl z-10">
-    <img class="w-full bg-cover" [src]="character.image" [alt]="character.name">
-    <div class="space-y-3 p-6">
-      <div class="text-center">
-        <h3 class="text-2xl font-semibold text-nowrap text-ellipsis overflow-hidden">{{ character.name }}</h3>
-        <div class="flex gap-2 justify-center items-center">
-          <app-status-character [status]="character.status" />
-          <p class="flex gap-2 justify-center items-center">
-            <span>{{ character.status | titlecase }}</span>
-            <span>-</span>
-            <span>{{ character.species }}</span>
-          </p>
-        </div>
+  <div class="w-full overflow-hidden rounded-lg bg-white/80 backdrop-blur-xl z-10">
+    <img [routerLink]="['/character', character.id]" class="w-full bg-cover cursor-pointer" [src]="character.image" [alt]="character.name">
+    <div class="px-3 py-4">
+      <h3 [routerLink]="['/character', character.id]" class="text-2xl font-semibold text-nowrap text-ellipsis overflow-hidden cursor-pointer">{{ character.name }}</h3>
+      <div class="flex gap-2 justify-center items-center">
+        <app-status-character [status]="character.status" />
+        <p class="flex gap-1 justify-center items-center">
+          <span>{{ character.status | titlecase }}</span>
+          <span>-</span>
+          <span class="text-nowrap text-ellipsis overflow-hidden">{{ character.species }}</span>
+        </p>
       </div>
-      <!-- <div class="flex flex-col">
-        <span class="text-white/70">Last known location:</span>
-        <span class="font-semibold text-lg">Earth (Replacement Dimension)</span>
-      </div>
-      <div class="flex flex-col">
-        <span class="text-white/70">First seen in:</span>
-        <span class="font-semibold text-lg">Big Trouble in Little Sanchez</span>
-      </div> -->
-
     </div>
   </div>
 </article>
