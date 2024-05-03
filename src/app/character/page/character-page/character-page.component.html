@@ -1,68 +1,60 @@
-<section class="group rounded-lg overflow-hidden flex flex-col mx-2 bg-slate-200 my-8 sm:flex-row">
+<section class="group rounded-lg overflow-hidden flex flex-col gap-x-4 mx-2 bg-slate-200 my-8 sm:flex-row sm:flex-wrap lg:mx-0">
 
   @if (character) {
   <img [src]="character.image" [alt]="character.name" class="">
-  <div class="flex flex-col gap-4 p-6 sm:flex-row md:gap-12">
-    <div class="flex-[1_0_auto] space-y-2">
-      <h2 class="font-bold text-3xl">{{ character.name }}</h2>
-      <ul class="block space-y-2">
-        <li class="flex gap-2 items-center">
-          <span class="">Status: </span>
-          <span class="font-semibold">{{ character.status }}</span>
-          <app-status-character [status]="character.status"/>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Specie: </span>
-          <span class="font-semibold">{{ character.species }}</span>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Type: </span>
-          <span class="font-semibold">{{ character.type }}</span>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Gender: </span>
-          <span class="font-semibold">{{ character.gender }}</span>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Location: </span>
-          <span class="font-semibold">{{ character.location.name }}</span>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Origin: </span>
-          <span class="font-semibold">{{ character.origin.name }}</span>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Created at: </span>
-          <span class="font-semibold">{{ character.created | date:'short' }}</span>
-        </li>
-        <li>
-          <span class="font-medium text-gray-800">Link: </span>
-          <span class="font-semibold text-blue-500">
-            <a [href]="character.url" target="_blank">{{ character.name | lowercase }}</a>
-          </span>
-        </li>
-      </ul>
+
+
+
+  <div class="max-w-72 flex flex-col gap-4 px-6 py-6">
+        <h2 class="font-bold text-3xl">{{ character.name | uppercase}}</h2>
+
+        <ul class="space-y-2">
+          <li class="flex gap-2 items-center">
+            <span class="">Status: </span>
+            <span class="font-semibold">{{ character.status }}</span>
+            <app-status-character [status]="character.status"/>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Specie: </span>
+            <span class="font-semibold">{{ character.species }}</span>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Type: </span>
+            <span class="font-semibold">{{ character.type }}</span>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Gender: </span>
+            <span class="font-semibold">{{ character.gender }}</span>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Location: </span>
+            <span class="font-semibold text-wrap">{{ character.location.name }}</span>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Origin: </span>
+            <span class="font-semibold text-wrap">{{ character.origin.name }}</span>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Created at: </span>
+            <span class="font-semibold">{{ character.created | date:'short' }}</span>
+          </li>
+          <li>
+            <span class="font-medium text-gray-800">Link: </span>
+            <span class="font-semibold text-blue-500">
+              <a [href]="character.url" target="_blank">{{ character.name | lowercase }}</a>
+            </span>
+          </li>
+        </ul>
     </div>
 
-    <div class="space-y-2 sm:hidden md:block">
-      <h3 class="font-bold text-3xl">Last Episodes</h3>
-      <ul class="flex gap-y-1 gap-x-4 flex-wrap lg:gap-x-12">
-        @for (episode of character.episode.slice(character.episode.length - 10).reverse(); track $index) {
+    <div class="space-y-2 px-6 pb-6 flex-shrink sm:pt-6 ">
+      <h3 class="font-bold text-2xl">Last Episodes</h3>
+      <ul class="space-y-1">
+        @for (episode of character.episode.slice(character.episode.length - 8).reverse(); track $index) {
           <li>{{ episode }}</li>
         }
       </ul>
     </div>
-
-  </div>
-
-  <!-- <div class="px-6 pb-6 hidden sm:block md:hidden">
-    <h3 class="font-bold text-3xl">Last Episodes</h3>
-      <ul class="flex gap-4 flex-wrap">
-        @for (episode of character.episode.slice(character.episode.length - 10).reverse(); track $index) {
-          <li>Episode {{ episode.slice(40) }}</li>
-        }
-      </ul>
-  </div> -->
 
   }
 </section>
