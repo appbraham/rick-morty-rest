@@ -1,4 +1,15 @@
-<section class="group rounded-lg overflow-hidden bg-slate-200 mx-2 p-6 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:mx-0">
+<section class="relative rounded-lg bg-slate-200 mx-2 p-6 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:mx-0">
+
+  <!-- <a [routerLink]="['/']" class="group absolute  p-1 grid place-items-center -top-4
+     before:absolute before:size-full before:rounded-full before:bg-slate-200 before:hover:bg-rainbow before:hover:animate-spiner" aria-label="Back">
+    <svg class="z-50" width="32" height="32" viewBox="0 0 17 16">
+     <path class="fill-neutral group-hover:fill-white" fill="currentColor" fill-rule="evenodd" d="m1.307 5.988 5.309-4.645c.411-.41.891-.479 1.302-.068v3.132l.229-.001c5.016 0 8.738 3.563 8.738 8.41 0 1.688-.774 1.073-1.097.484-1.522-2.78-4.197-4.677-7.681-4.677l-.19.001v3.065c-.411.41-.941.361-1.302.068L1.306 7.474a1.052 1.052 0 0 1 .001-1.486"/>
+    </svg>
+  </a> -->
+
+  <a [routerLink]="['/']" class="absolute bg-slate-200 size-12 p-4 grid place-items-center rounded-full -top-5
+      before:absolute before:size-10 before:bg-neutral before:rounded-full before:custom-clip-path before:hover:bg-rainbow">
+  </a>
 
   @if (character) {
   <img [src]="character.image" [alt]="character.name" class="size-full object-cover object-center"

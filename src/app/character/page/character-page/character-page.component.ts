@@ -3,11 +3,12 @@ import { Character } from '../../interface/character.interface';
 import { CharacterService } from '../../service/character.service';
 import { StatusCharacterComponent } from '../../component/status-character/status-character.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-character-page',
   standalone: true,
-  imports: [ CommonModule, StatusCharacterComponent],
+  imports: [ CommonModule, RouterLink, StatusCharacterComponent],
   templateUrl: './character-page.component.html',
   styles: ``
 })
