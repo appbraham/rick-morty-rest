@@ -10,5 +10,5 @@ import { LogoComponent } from './shared/component/logo/logo.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'rick-morty-rest';
+  title = 'Rick and Morty';
 }
