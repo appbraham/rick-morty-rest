@@ -2,7 +2,10 @@
                  before:absolute before:block before:size-[180%] before:hover:animate-spiner">
 
   <div class="w-full overflow-hidden rounded-lg bg-white/80 backdrop-blur-xl z-10">
-    <img [routerLink]="['/character', character.id]" class="w-full bg-cover cursor-pointer" [src]="character.image" [alt]="character.name">
+
+    <img [routerLink]="['/character', character.id]" class="w-full bg-cover cursor-pointer"
+         [src]="character.image" [alt]="character.name" [style]="{'view-transition-name': 'character'.concat(character.id.toString())}">
+
     <div class="px-3 py-4">
       <h3 [routerLink]="['/character', character.id]" class="text-2xl font-semibold text-nowrap text-ellipsis overflow-hidden cursor-pointer">{{ character.name }}</h3>
       <div class="flex gap-2 justify-center items-center">

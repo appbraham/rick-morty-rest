@@ -3,7 +3,7 @@
   @for (character of characters; track character.id) {
 
     @defer (on viewport) {
-      <app-card-character [character]="character" (loadCharacters)="loadCharacters($event)" />
+      <app-card-character [character]="character" (loadCharacters)="loadCharacters($event)"/>
     }@placeholder {
       <p>Cargando...</p>
     }

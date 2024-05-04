@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { LogoComponent } from './shared/component/logo/logo.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LogoComponent ],
+  imports: [RouterOutlet, RouterLink, LogoComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
