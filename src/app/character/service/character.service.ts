@@ -22,8 +22,8 @@ export class CharacterService {
     return this.http.get<Character>(`${this.baseUrl}/character/${id}`);
   }
 
-  getMultipleEpisodes( ids: number[]):Observable<Episode[]>{
-    return this.http.get<Episode[]>(`${this.baseUrl}/episode/${ids}`);
+  getMultipleEpisodes( ids: number[]):Observable<Episode | Episode[]>{
+    return this.http.get<Episode | Episode[]>(`${this.baseUrl}/episode/${ ids }`);
   }
 
 }

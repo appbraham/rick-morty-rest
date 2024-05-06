@@ -16,49 +16,55 @@ import { Episode } from '../../../episode/interface/episode.interface';
 export class CharacterPageComponent implements OnInit {
 
   @Input()
-  public id!: number; //param input route
+  public id?: number; //param input route
 
   public character!: Character;
   private characterService = inject(CharacterService);
-  // public episodes: Episode[] = [];
+  public episodes: Episode | Episode[] = [];
+  public idsEpisodes: number[] = [];
 
   ngOnInit(): void {
     this.getCharacter();
   }
 
   getCharacter() {
-
+    if (!this.id) throw new Error("Id doesn't exist");
     return this.characterService.getSingleCharacter(this.id)
-      .subscribe(character => this.character = character);
+      .subscribe(character => {
+        this.character = character;
+        this.getEpisodesByCharacter(character);
+        this.getEpisodes(this.idsEpisodes);
+        console.log(this.idsEpisodes);
+      });
   }
 
-
-  getEpisodesByCharacter(character: Character): Episode[] {
-    if (!character) throw Error("Character doesn't exist");
-
-    const idEpisodes: number[] = [];
-
-    const lastEpisodes = character.episode.slice(character.episode.length - 10).reverse();
-
-    lastEpisodes.map(urlEpisode => {
-      const id = parseInt(urlEpisode.slice(urlEpisode.lastIndexOf('/') + 1));
-      idEpisodes.push(id);
-    });
-
-    return this.getEpisodes(idEpisodes);
-
-  }
-
-  getEpisodes(ids: number[]): Episode[]{
-
-    let episodes: Episode[] = [];
-
+  getEpisodes(ids: number[]) {
     this.characterService.getMultipleEpisodes(ids)
-      .subscribe( ( results ) => episodes = results );
-
-    return episodes;
+      .subscribe(episodes => this.episodes = episodes);
   }
 
+  getEpisodesByCharacter(character: Character) {
+    if (!character) throw new Error("Character doesn't exist");
 
+    let lastEpisodes: string[] = [];
 
+    if (character.episode.length <= 10) {
+      lastEpisodes = character.episode.reverse();
+    } else {
+      lastEpisodes = character.episode.slice(character.episode.length - 10).reverse();
+    }
+
+    if (lastEpisodes.length === 1) {
+      this.idsEpisodes.push( this.getIdEpisodeFromUrl(lastEpisodes[0]));
+    } else {
+      lastEpisodes.map(urlEpisode => {
+        this.idsEpisodes.push(this.getIdEpisodeFromUrl(urlEpisode));
+      });
+    }
+    console.log(this.idsEpisodes);
+  }
+
+  getIdEpisodeFromUrl(url: string): number{
+    return parseInt(url.slice(url.lastIndexOf('/') + 1));
+  }
 }

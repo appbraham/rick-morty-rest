@@ -1,4 +1,4 @@
-<section class="group relative rounded-lg rounded-tl-none bg-slate-200 mx-2 p-6 my-10 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:mx-0">
+<section class="group relative rounded-lg rounded-tl-none bg-slate-200 mx-2 p-6 my-10 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:mx-0">
 
   <a [routerLink]="['/']" aria-label="Back" class="absolute bg-slate-200 size-12 p-4 grid place-items-center rounded-full -top-6 z-10
       before:absolute before:size-10 before:bg-neutral before:rounded-full before:custom-clip-path before:hover:bg-rainbow">
@@ -8,9 +8,9 @@
   <img [src]="character.image" [alt]="character.name" class="size-full object-cover object-center"
        [style]="{'view-transition-name': 'character'.concat(character.id.toString()) }">
 
-  <div class="self-center space-y-4">
+  <div class="self-center space-y-3">
     <h2 class="font-bold text-3xl">{{ character.name | uppercase}}</h2>
-    <ul class="space-y-3 text-lg">
+    <ul class="space-y-2 text-lg">
       <li class="flex gap-2 items-center">
         <span class="font-medium text-gray-600">Status: </span>
         <span class="font-semibold">{{ character.status }}</span>
@@ -49,17 +49,16 @@
     </ul>
   </div>
 
-  <div class="space-y-2 self-center sm:col-span-2 md:col-span-1 sm:text-center">
+  <div class="space-y-1 self-center sm:col-span-2 md:col-span-1">
     <h3 class="font-bold text-2xl">Last 10 Episodes</h3>
+    <ul class="flex flex-col gap-1 font-medium">
 
-    <!-- @for (episode of getEpisodes([2]); track episode.id) {
-      <span class="block">{{ episode.name }}</span>
-    } -->
+      <!-- @if( typeof( episodes ) ){}
 
-    <ul class="flex flex-col gap-1 text-lg font-medium">
-      <!-- @for (episode of character.episode.slice(character.episode.length - 10).reverse(); track $index) {
-      <li class="hidden sm:block text-nowrap text-ellipsis overflow-hidden">{{ episode }}</li>
-      <li class="text-nowrap text-ellipsis overflow-hidden sm:hidden">Episode {{ episode.slice(episode.lastIndexOf('/')+1) }}</li>
+      @for (episode of episodes; track episode.id) {
+        <li class="block">
+          <span class="text-gray-600">{{ episode.episode }}</span> - {{ episode.name }}
+        </li>
       } -->
     </ul>
   </div>
