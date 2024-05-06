@@ -5,6 +5,7 @@ import { StatusCharacterComponent } from '../../component/status-character/statu
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Episode } from '../../../episode/interface/episode.interface';
+import { EpisodeService } from '../../../episode/service/Episode.service';
 
 @Component({
   selector: 'app-character-page',
@@ -20,7 +21,8 @@ export class CharacterPageComponent implements OnInit {
 
   public character!: Character;
   private characterService = inject(CharacterService);
-  public episodes: Episode | Episode[] = [];
+  private episodeService = inject(EpisodeService);
+  public episodes: Episode[] = [];
   public idsEpisodes: number[] = [];
 
   ngOnInit(): void {
@@ -39,23 +41,29 @@ export class CharacterPageComponent implements OnInit {
   }
 
   getEpisodes(ids: number[]) {
-    this.characterService.getMultipleEpisodes(ids)
+    if( ids.length === 1) {
+      this.episodeService.getSingleEpisode(ids[0])
+        .subscribe( episode => this.episodes.push(episode));
+    }else{
+      this.episodeService.getMultipleEpisodes(ids)
       .subscribe(episodes => this.episodes = episodes);
+    }
   }
 
-  getEpisodesByCharacter(character: Character) {
+  getEpisodesByCharacter(character: Character, numberEpisodes: number = 10) {
     if (!character) throw new Error("Character doesn't exist");
+    if (numberEpisodes <= 0) throw new Error("The number of episodes must be greater than zero");
 
     let lastEpisodes: string[] = [];
 
-    if (character.episode.length <= 10) {
+    if (character.episode.length <= numberEpisodes) {
       lastEpisodes = character.episode.reverse();
     } else {
-      lastEpisodes = character.episode.slice(character.episode.length - 10).reverse();
+      lastEpisodes = character.episode.slice(character.episode.length - numberEpisodes).reverse();
     }
 
     if (lastEpisodes.length === 1) {
-      this.idsEpisodes.push( this.getIdEpisodeFromUrl(lastEpisodes[0]));
+      this.idsEpisodes.push(this.getIdEpisodeFromUrl(lastEpisodes[0]));
     } else {
       lastEpisodes.map(urlEpisode => {
         this.idsEpisodes.push(this.getIdEpisodeFromUrl(urlEpisode));
@@ -64,7 +72,8 @@ export class CharacterPageComponent implements OnInit {
     console.log(this.idsEpisodes);
   }
 
-  getIdEpisodeFromUrl(url: string): number{
+  getIdEpisodeFromUrl(url: string): number {
     return parseInt(url.slice(url.lastIndexOf('/') + 1));
   }
+
 }

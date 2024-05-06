@@ -1,6 +1,6 @@
-<section class="group relative rounded-lg rounded-tl-none bg-slate-200 mx-2 p-6 my-10 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:mx-0">
+<section class="group relative rounded-lg rounded-tr-none bg-slate-200 mx-2 p-6 my-10 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:mx-0">
 
-  <a [routerLink]="['/']" aria-label="Back" class="absolute bg-slate-200 size-12 p-4 grid place-items-center rounded-full -top-6 z-10
+  <a [routerLink]="['/']" aria-label="Back" class="absolute bg-slate-200 size-12 p-4 grid place-items-center rounded-full -top-6 right-0 z-10
       before:absolute before:size-10 before:bg-neutral before:rounded-full before:custom-clip-path before:hover:bg-rainbow">
   </a>
 
@@ -49,17 +49,18 @@
     </ul>
   </div>
 
-  <div class="space-y-1 self-center sm:col-span-2 md:col-span-1">
+  <div class="space-y-1 self-center sm:col-span-2 md:col-span-2">
     <h3 class="font-bold text-2xl">Last 10 Episodes</h3>
     <ul class="flex flex-col gap-1 font-medium">
 
-      <!-- @if( typeof( episodes ) ){}
-
       @for (episode of episodes; track episode.id) {
         <li class="block">
-          <span class="text-gray-600">{{ episode.episode }}</span> - {{ episode.name }}
+          <span class="text-gray-600">{{ episode.episode }}</span> -
+          <span>{{ episode.name }}</span>
+          <span class="text-gray-600"> ( {{ episode.air_date | date:'dd MMMM yyyy' }} )</span>
         </li>
-      } -->
+      }
+
     </ul>
   </div>
 

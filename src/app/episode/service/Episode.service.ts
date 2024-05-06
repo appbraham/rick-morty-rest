@@ -13,7 +13,12 @@ export class EpisodeService {
   private http = inject(HttpClient);
 
   getMultipleEpisodes( ids: number[]):Observable<Episode[]>{
-    return this.http.get<Episode[]>(`${this.baseUrl}/episode/${ids}`);
+    return this.http.get<Episode[]>(`${this.baseUrl}/episode/${ ids }`);
   }
+
+  getSingleEpisode( ids: number):Observable<Episode>{
+    return this.http.get<Episode>(`${this.baseUrl}/episode/${ ids }`);
+  }
+
 
 }
