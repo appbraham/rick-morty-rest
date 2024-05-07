@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Episode } from '../../../episode/interface/episode.interface';
 import { EpisodeService } from '../../../episode/service/Episode.service';
+import { EpisodeComponent } from '../../../episode/component/episode/episode.component';
 
 @Component({
   selector: 'app-character-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, StatusCharacterComponent],
+  imports: [CommonModule, RouterLink, StatusCharacterComponent, EpisodeComponent],
   templateUrl: './character-page.component.html',
   styles: ``
 })
@@ -46,7 +47,7 @@ export class CharacterPageComponent implements OnInit {
         .subscribe( episode => this.episodes.push(episode));
     }else{
       this.episodeService.getMultipleEpisodes(ids)
-      .subscribe(episodes => this.episodes = episodes);
+      .subscribe(episodes => this.episodes = episodes.reverse());
     }
   }
 
@@ -57,9 +58,9 @@ export class CharacterPageComponent implements OnInit {
     let lastEpisodes: string[] = [];
 
     if (character.episode.length <= numberEpisodes) {
-      lastEpisodes = character.episode.reverse();
+      lastEpisodes = character.episode;
     } else {
-      lastEpisodes = character.episode.slice(character.episode.length - numberEpisodes).reverse();
+      lastEpisodes = character.episode.slice(character.episode.length - numberEpisodes);
     }
 
     if (lastEpisodes.length === 1) {
