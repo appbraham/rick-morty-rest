@@ -1,4 +1,4 @@
-<section class="group relative rounded-lg rounded-tr-none bg-slate-200 mx-2 my-10 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10 lg:mx-0">
+<section class="group relative rounded-lg rounded-tr-none bg-slate-200 mx-2 my-10 grid gap-8 grid-flow-row grid-cols-1 sm:grid-cols-2 md:mx-4 lg:grid-cols-4 lg:gap-10 2xl:mx-0">
 
   <a [routerLink]="['/']" aria-label="Back" class="absolute bg-slate-200 size-12 p-4 grid place-items-center rounded-full -top-6 right-0 z-10
       before:absolute before:size-10 before:bg-neutral before:rounded-full before:custom-clip-path before:hover:bg-rainbow">
@@ -10,7 +10,7 @@
          [style]="{'view-transition-name': 'character'.concat(character.id.toString()) }">
   </div>
 
-  <div class="self-center space-y-3 px-8 sm:px-0 sm:py-8">
+  <div class="self-top space-y-3 px-8 sm:px-0 sm:py-8">
     <h2 class="text-center font-bold text-3xl text-neutral sm:text-left">{{ character.name | uppercase}}</h2>
     <ul class="space-y-2 text-lg">
       <li class="flex gap-2 items-center">
@@ -51,7 +51,7 @@
     </ul>
   </div>
 
-  <div class="space-y-1 self-center pb-8 px-8 sm:col-span-2 md:col-span-2 lg:pl-0 lg:pt-8">
+  <div class="space-y-1 self-top pb-8 px-8 sm:col-span-2 md:col-span-2 lg:pl-0 lg:pt-8">
     <app-episode [episodes]="episodes" />
   </div>
 

@@ -3,7 +3,6 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Character, CharacterResponse } from '../interface/character.interface';
 import { environment } from '../../../environments/environment';
-import { Episode } from '../../episode/interface/episode.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +19,11 @@ export class CharacterService {
 
   getSingleCharacter(id: number): Observable<Character>{
     return this.http.get<Character>(`${this.baseUrl}/character/${id}`);
+  }
+
+  findCharacterByName(name: string): Observable<CharacterResponse>{
+    const params = new HttpParams().set('name', name);
+    return this.http.get<CharacterResponse>(`${this.baseUrl}/character`, { params });
   }
 
 }

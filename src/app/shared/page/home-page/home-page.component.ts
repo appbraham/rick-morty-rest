@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Character } from '../../../character/interface/character.interface';
 import { CharacterService } from '../../../character/service/character.service';
 import { CardCharacterComponent } from '../../../character/component/card-character/card-character.component';
+import { LogoComponent } from '../../component/logo/logo.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, CardCharacterComponent],
+  imports: [CommonModule, RouterLink, LogoComponent, CardCharacterComponent],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit {
