@@ -37,7 +37,6 @@ export class CharacterPageComponent implements OnInit {
         this.character = character;
         this.getEpisodesByCharacter(character);
         this.getEpisodes(this.idsEpisodes);
-        console.log(this.idsEpisodes);
       });
   }
 
@@ -70,7 +69,6 @@ export class CharacterPageComponent implements OnInit {
         this.idsEpisodes.push(this.getIdEpisodeFromUrl(urlEpisode));
       });
     }
-    console.log(this.idsEpisodes);
   }
 
   getIdEpisodeFromUrl(url: string): number {

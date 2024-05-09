@@ -1,3 +1,12 @@
+<section class="mx-2 my-4">
+  <input
+    type="text"
+    placeholder="Search character by name"
+    class="rounded-lg px-4 py-2"
+    [formControl]="searchCharacter"
+  >
+</section>
+
 <section class="grid grid-cols-flow gap-2">
 
   @for (character of characters; track character.id) {
@@ -7,7 +16,6 @@
     }@placeholder {
       <p>Cargando...</p>
     }
-
   }
 
 </section>
