@@ -7,15 +7,16 @@
   >
 </section>
 
-<section class="grid grid-cols-flow gap-2">
+<section
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="100"
+  (scrolled)="onScroll()"
+  class="grid grid-cols-flow gap-2">
 
   @for (character of characters; track character.id) {
 
-    @defer (on viewport) {
-      <app-card-character [character]="character" (loadCharacters)="loadCharacters($event)"/>
-    }@placeholder {
-      <p>Cargando...</p>
-    }
+    <app-card-character class="max-w-80" [character]="character"/>
   }
 
 </section>
